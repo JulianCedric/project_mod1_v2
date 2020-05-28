@@ -1,4 +1,4 @@
-require relative
+require_relative './models/user.rb'
 
 class Game
 
@@ -23,19 +23,48 @@ class Game
         puts " "
         puts "Please enter your first name."
         name = gets.chomp
+        puts " "
         puts "Great! Thanks, #{name.capitalize}. And your nickname too, please."
         nickname = gets.chomp
-        puts "Awesome. You're all set."
+        name = User.create(name: "#{name.capitalize}", nickname: "#{nickname.capitalize}")
+        puts " "
+        puts "Awesome. You can use either one at login, btw. You're all set."
         sleep(2)
         puts " "
     end
 
+    def prompt_1
+        puts "Enter '1' to browse all suits."
+    end 
+
+    def prompt_2
+        puts "Enter '2' to browse Marvel movies."
+    end
+
+    def prompt_0
+        puts "What would you like to do first?"
+            sleep(2)
+            puts " "
+            prompt_1 
+            prompt_2 
+            puts " "
+            input = gets.chomp
+            if input == '1' 
+                # suits_menu
+            elsif input == '2'
+                # movies_menu 
+            else
+                puts "Please enter either '1' or '2'."
+            end
+    end
+
     def main_menu
-        "In this app, you can browse all of Ironman's Suits as well as add Marvel movies that you've seen."
+        puts "In this app, you can browse all of Ironman's Suits as well as add Marvel movies that you've seen."
         sleep(2)
-        puts " "
-        puts "What would you like to do "
-        puts " "
+        puts "MAIN MENU:"
+        puts "   1. Browse Suits"
+        puts "   2. Your Marvel Movies"
+        prompt_0
     end
 
 
