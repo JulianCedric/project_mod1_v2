@@ -13,7 +13,8 @@ class Game
         puts "J.A.R.V.I.S. initializing"
         sleep(2)
         puts "..."
-        sleep(2)
+        sleep(3)
+        puts " "
         puts " "
     end
 
@@ -39,7 +40,7 @@ class Game
 
     def prompt_2
         puts "Enter '2' to browse Marvel movies."
-    end
+    end 
 
     def prompt_0
         puts "What would you like to do first?"
@@ -54,16 +55,25 @@ class Game
             elsif input == '2'
                 # movies_menu 
             else
-                puts "Please enter either '1' or '2'."
+                puts "Please enter either '1' or '2'."    
             end
     end
 
     def main_menu
         puts "In this app, you can browse all of Ironman's Suits as well as add Marvel movies that you've seen."
-        sleep(2)
+        sleep(3.5)
+        puts "The more Marvel movies you've seen, the more advanced a Suit you unlock."
+        sleep(3.5)
+        puts "But more on that in just a bit."
+        sleep(3.5)
+        puts " "
+        puts " "
         puts "MAIN MENU:"
+        puts " "
         puts "   1. Browse Suits"
         puts "   2. Your Marvel Movies"
+        sleep(1)
+        puts " "
         prompt_0
     end
 
