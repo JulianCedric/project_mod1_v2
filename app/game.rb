@@ -3,9 +3,6 @@ class Game
     def start
         system "clear"
         introduction
-        # welcome
-        # rules
-        # quick_demo
     end
 
     def introduction 
