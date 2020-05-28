@@ -3,6 +3,7 @@ require_relative './models/movie.rb'
 
 class Game
 
+    @@arr = []
     def start
         system "clear"
         introduction
@@ -34,7 +35,6 @@ class Game
         sleep(1)
         puts " "
     end
-
 
     def prompt_0
         puts "   1. Browse Suits"
@@ -102,14 +102,22 @@ class Game
 
         puts "Please enter the number next to one movie you have seen from this list."
         puts ""
+
+
+
         input = gets.chomp
         puts ""
 
+        
         if input.to_i != 0  && input.to_i <= Movie.all.count
             movie = Movie.find_by(id: input.to_i)
-            puts movie.name
+            @@arr << movie
+            puts @@arr.count
+            # Add point to users fanpoints
+            # Display message about it
         else
             self.movies_menu
         end
+
     end
 end
