@@ -6,6 +6,7 @@
     # Please enter '1' to browse all suits.
     # Please enter '2' to add Marvel movies you've seen. 
 # User enters '1' and enters browse suits branch.
+# (suits branch)
     # User is shown a menu of all 7 Suits. 
     # User is asked which suit he/she wants to see first.   
     # User is asked to enter the number next to each suit name he/she wants to see first.        
@@ -16,7 +17,8 @@
             # Please enter 'Y' to be directed to the movie options screen. 
             # Please enter 'N' to be directed back to the suits menu. 
                 # User enters 'Y' and is directed straight to the movie options screen. 
-    # User is shown a menu of all MCU movies.
+                # User is shown a menu of all MCU movies.
+# (movies branch)
     # User is asked which of the following movies he/she has seen. 
     # User is asked to enter the number next to the first movie he/she has seen. 
         # User enters '1' for 'Ironman 1' movie. 
@@ -32,5 +34,4 @@
             # User adds first Ironman Suit (Hulkbuster) and unlocks first two villains.
 
 # For demo, user is shown how to update account like name and nickname. 
-# To end demo, user is shown how to delete their account. 
-
+# To end demo, user is shown how to delete their account.
