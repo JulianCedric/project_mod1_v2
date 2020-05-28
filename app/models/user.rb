@@ -1,4 +1,4 @@
 class User < ActiveRecord::Base 
-    has_many :sessions
-    has_many :suits, through: :sessions 
+    has_many :movies
+    has_many :suits, through: :movies 
 end

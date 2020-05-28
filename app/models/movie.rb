@@ -1,4 +1,4 @@
-class Session < ActiveRecord::Base 
+class Movie < ActiveRecord::Base 
     belongs_to :user 
     belongs_to :suit
 end
