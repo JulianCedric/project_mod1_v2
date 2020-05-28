@@ -1,5 +1,5 @@
 User.destroy_all
-Session.destroy_all
+Movie.destroy_all
 Suit.destroy_all 
 Villain.destroy_all 
 
@@ -12,7 +12,7 @@ belle = User.create(name: "Belle", nickname: "Fan Girl")
 chris = User.create(name: "Chris", nickname: "Just Chris")
 
 # Suit instances (7):
-    # A user unlocks a new suit after each 3-day streak of completed sessions. 
+    # A user unlocks a new suit afte21 movies. 
 
 
 s1 = Suit.create(model: "Hydro Armor", superpower: "Deep Sea Swimming")
@@ -23,30 +23,30 @@ s5 = Suit.create(model: "Space Armor MK I", superpower: "Space Flight")
 s6 = Suit.create(model: "God Buster Armor", superpower: "God-level Strength")
 s7 = Suit.create(model: "Telepresence Armor", superpower: "Interdimensional Travel")
     
-# Session instances (21):
-    # 1 user, 21-day streak of completed ('c') sessions, 7 suits.
+# Movie instances (21):
+    # 1 user, 21 movies, 7 suits.
 
-sess1 = Session.create(name: "Sess1", status: "c", user_id: adam.id, suit_id: nil)
-sess2 = Session.create(name: "Sess2", status: "c", user_id: adam.id, suit_id: nil)
-sess3 = Session.create(name: "Sess3", status: "c", user_id: adam.id, suit_id: s1.id)
-sess4 = Session.create(name: "Sess4", status: "c", user_id: adam.id, suit_id: nil)
-sess5 = Session.create(name: "Sess5", status: "c", user_id: adam.id, suit_id: nil)
-sess6 = Session.create(name: "Sess6", status: "c", user_id: adam.id, suit_id: s2.id)
-sess7 = Session.create(name: "Sess7", status: "c", user_id: adam.id, suit_id: nil)
-sess8 = Session.create(name: "Sess8", status: "c", user_id: adam.id, suit_id: nil)
-sess9 = Session.create(name: "Sess9", status: "c", user_id: adam.id, suit_id: s3.id)
-sess10 = Session.create(name: "Sess10", status: "c", user_id: adam.id, suit_id: nil)
-sess11 = Session.create(name: "Sess11", status: "c", user_id: adam.id, suit_id: nil)
-sess12 = Session.create(name: "Sess12", status: "c", user_id: adam.id, suit_id: s4.id)
-sess13 = Session.create(name: "Sess13", status: "c", user_id: adam.id, suit_id: nil)
-sess14 = Session.create(name: "Sess14", status: "c", user_id: adam.id, suit_id: nil)
-sess15 = Session.create(name: "Sess15", status: "c", user_id: adam.id, suit_id: s5.id)
-sess16 = Session.create(name: "Sess16", status: "c", user_id: adam.id, suit_id: nil)
-sess17 = Session.create(name: "Sess17", status: "c", user_id: adam.id, suit_id: nil)
-sess18 = Session.create(name: "Sess18", status: "c", user_id: adam.id, suit_id: s6.id)
-sess19 = Session.create(name: "Sess19", status: "c", user_id: adam.id, suit_id: nil)
-sess20 = Session.create(name: "Sess20", status: "c", user_id: adam.id, suit_id: nil)
-sess21 = Session.create(name: "Sess21", status: "c", user_id: adam.id, suit_id: s7.id)
+mov1 = Movie.create(name: "mov1", user_id: adam.id, suit_id: nil)
+mov2 = Movie.create(name: "mov2", user_id: adam.id, suit_id: nil)
+mov3 = Movie.create(name: "mov3", user_id: adam.id, suit_id: s1.id)
+mov4 = Movie.create(name: "mov4", user_id: adam.id, suit_id: nil)
+mov5 = Movie.create(name: "mov5", user_id: adam.id, suit_id: nil)
+mov6 = Movie.create(name: "mov6", user_id: adam.id, suit_id: s2.id)
+mov7 = Movie.create(name: "mov7", user_id: adam.id, suit_id: nil)
+mov8 = Movie.create(name: "mov8", user_id: adam.id, suit_id: nil)
+mov9 = Movie.create(name: "mov9", user_id: adam.id, suit_id: s3.id)
+mov10 = Movie.create(name: "mov10", user_id: adam.id, suit_id: nil)
+mov11 = Movie.create(name: "mov11", user_id: adam.id, suit_id: nil)
+mov12 = Movie.create(name: "mov12", user_id: adam.id, suit_id: s4.id)
+mov13 = Movie.create(name: "mov13", user_id: adam.id, suit_id: nil)
+mov14 = Movie.create(name: "mov14", user_id: adam.id, suit_id: nil)
+mov15 = Movie.create(name: "mov15", user_id: adam.id, suit_id: s5.id)
+mov16 = Movie.create(name: "mov16", user_id: adam.id, suit_id: nil)
+mov17 = Movie.create(name: "mov17", user_id: adam.id, suit_id: nil)
+mov18 = Movie.create(name: "mov18", user_id: adam.id, suit_id: s6.id)
+mov19 = Movie.create(name: "mov19", user_id: adam.id, suit_id: nil)
+mov20 = Movie.create(name: "mov20", user_id: adam.id, suit_id: nil)
+mov21 = Movie.create(name: "mov21", user_id: adam.id, suit_id: s7.id)
 
 # Villain instances (14):
     # 2 per suit.
