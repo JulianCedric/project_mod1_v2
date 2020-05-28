@@ -1,88 +1,43 @@
-class Game
+require relative
 
-    # X = ?? 
+class Game
 
     def start
         system "clear"
         introduction
-        demo 
+        welcome
+        main_menu
     end
 
     def introduction 
         puts "J.A.R.V.I.S. initializing"
-        sleep(5)
+        sleep(2)
+        puts "..."
+        sleep(2)
         puts " "
     end
 
-    def demo
-        # Demo of a session is only 25 seconds long. 
-        puts "Enter 'x' any time throughout this session to stop the 25-second timer and leave the session."
+    def welcome
+        puts "Welcome to the Marvel Movies App."
         sleep(2)
         puts " "
-        x = gets.chomp
-        puts "Beginning session in 3.. " 
-        sleep(1.5) 
-        puts " " 
-        puts "2.. "
-        sleep(1.5) 
-        puts " "
-        puts "1.. "
-        sleep(1.5)
-        puts " "
-        puts "CODE TIME"
-        sleep(5)
-        puts " "
-        puts "20 seconds to go"
-        sleep(5)
-        puts " "
-        puts "About half-way there."
+        puts "Please enter your first name."
+        name = gets.chomp
+        puts "Great! Thanks, #{name.capitalize}. And your nickname too, please."
+        nickname = gets.chomp
+        puts "Awesome. You're all set."
         sleep(2)
-        puts " "
-        puts "And remember.. "
-        sleep(2)
-        puts " "
-        puts "You can only get better each time you practice."
-        sleep(7)
-        puts " " 
-        puts "Done in 3.. "
-        sleep(1)
-        puts " "
-        puts "2.. "
-        sleep(1)
-        puts " "
-        puts "1.. "
-        sleep(1)
-        puts " "
-        puts "That wasn't so bad now was it?"
-        sleep(2.5)
-        puts " "
-        puts "You've just completed your very first session!"
-        sleep(2.5)
-        puts " "
-        puts "Every time you complete three sessions in a row" 
-        sleep(2.5)
-        puts " "
-        puts "That is, at least one session per day" 
-        sleep(2.5)
-        puts " "
-        puts "For 3 consecutive days,"
-        sleep(1)
-        puts " "
-        puts "You unlock an upgraded model of Ironman's Suit Armor"
-        sleep(1)
-        puts " "
-        puts "Which not only gives you a new superpower,"
-        sleep(1)
-        puts " "
-        puts "But each upgrade also unlocks a new foe"
-        sleep(1)
-        puts " "
-        puts "Each more powerful than the last."
-        sleep(2)
-        puts " "
-        puts "to be continued"
-        sleep(3)
         puts " "
     end
+
+    def main_menu
+        "In this app, you can browse all of Ironman's Suits as well as add Marvel movies that you've seen."
+        sleep(2)
+        puts " "
+        puts "What would you like to do "
+        puts " "
+    end
+
+
 
 end
