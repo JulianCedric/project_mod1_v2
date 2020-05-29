@@ -1,15 +1,33 @@
 require_relative './models/user.rb'
 require_relative './models/movie.rb'
+require_relative './models/suit.rb'
 
 class Game
+                                                    @@fan_points_arr = []
+                                                    @@user_arr = [] 
 
-    @@arr = []
     def start
         system "clear"
         introduction
         welcome
-        main_menu
+        main_menu 
     end
+
+                                                    def fan_points_arr 
+                                                        @@fan_points_arr  
+                                                    end
+
+                                                    def user_arr
+                                                        @@user_arr  
+                                                    end 
+
+                                                    def user_name
+                                                        user_arr[0]
+                                                    end
+
+                                                    def user_fan_points 
+                                                        user_arr[1]
+                                                    end 
 
     def introduction 
         puts "J.A.R.V.I.S. initializing"
@@ -25,13 +43,13 @@ class Game
         sleep(1)
         puts " "
         puts "Please enter your first name."
-        name = gets.chomp
+        name = gets.chomp 
         puts " "
-        puts "Great! Thanks, #{name.capitalize}. And your nickname too, please."
-        nickname = gets.chomp
-        name = User.create(name: "#{name.capitalize}", nickname: "#{nickname.capitalize}")
-        puts " "
-        puts "Awesome. You can use either one at login, btw. You're all set."
+        puts "Great! Thanks, #{name.capitalize}. You're all set, so let's jump right in."
+        name = User.create(name: "#{name.capitalize}", fan_points: 0)
+        @@user_arr << name
+        # puts " "
+        # puts "Awesome. You can use either one at login, btw. You're all set."
         sleep(1)
         puts " "
     end
@@ -44,17 +62,19 @@ class Game
         puts "What would you like to do first?"
         sleep(1)
         puts " "
-        puts "Enter '1' to browse all suits."
-        puts "Enter '2' to browse Marvel movies."
+        puts "   Enter '1' to browse all suits."
+        puts "   Enter '2' to browse Marvel movies."
         puts " "
         input = gets.chomp
-        if input == '1' 
+        if input.to_i == 1 
             suits_menu
-        elsif input == '2'
+            # puts " suits_menu "
+        elsif input.to_i == 2
             movies_menu 
-        else
-            puts "Please enter either '1' or '2'."
-            self.prompt_0
+            # puts " movies_menu "
+        # else
+        #     puts "Please enter either '1' or '2'."
+        #     # self.prompt_0
         end
         puts ""
     end
@@ -74,11 +94,12 @@ class Game
         puts ""
     end
 
+
     def suits_menu
         puts " "
         suits = Suit.all
         suits.each.with_index do |suit, i|
-            puts "#{i + 1}) #{suit.model} "
+            puts "#{i + 1} #{suit.model}"
         end
 
         puts ""
@@ -99,20 +120,36 @@ class Game
         movies.each.with_index do |movie, i|
            puts "#{i + 1}) #{movie.name}"
         end
-
         puts "Please enter the number next to one movie you have seen from this list."
-        puts ""
-
-
-
         input = gets.chomp
         puts ""
 
-        
         if input.to_i != 0  && input.to_i <= Movie.all.count
             movie = Movie.find_by(id: input.to_i)
-            @@arr << movie
-            puts @@arr.count
+            @@fan_points_arr << movie
+            @@user_arr << fan_points_arr.count
+            # puts "Great! Every time you check off a movie on this list, we award you with 1 fanpoint."
+            # "And each time you collect 3, you unlock a new SuperVillain.. needs to be revised.. "   
+            puts " "
+            puts " "
+            puts "Test Notes for Malcolm regarding Julian's latest tests: "
+            puts " "
+            puts " "
+            puts "fan_points_arr.count:"
+            puts fan_points_arr.count   
+            puts " "
+            puts "user:"
+            puts user_name
+            puts " "
+            puts "user's name:"
+            puts user_name.name  
+            puts " "
+            puts "user's fan_points:"
+            puts user_fan_points 
+            puts " "
+            puts "Basically, these are the main things we need to do the last bit of 'engineering' for our MVP to be complete:"
+            puts "Set up counter and update a user's fan_points (+= 1) each time a new movie is added.. "
+          
             # Add point to users fanpoints
             # Display message about it
         else
@@ -120,4 +157,7 @@ class Game
         end
 
     end
+
 end
+
+# What is a method that will take 'fan_points_arr.count' and add it to 
