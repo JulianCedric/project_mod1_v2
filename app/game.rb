@@ -3,31 +3,112 @@ require_relative './models/movie.rb'
 require_relative './models/suit.rb'
 
 class Game
-                                                    @@fan_points_arr = []
-                                                    @@user_arr = [] 
+    attr_reader :user
+    @@fan_points_arr = []
+    @@user_arr = [] 
 
     def start
         system "clear"
         introduction
-        welcome
+        login
+        # welcome
         main_menu 
     end
 
-                                                    def fan_points_arr 
-                                                        @@fan_points_arr  
-                                                    end
+    def login
+        puts "   Please enter '0' to CREATE A NEW ACCOUNT, or '1' to LOGIN."
+        input = gets.chomp
+        if input == '0'
+            puts "Please enter your first name."
+            name = gets.chomp
+            puts " "
+            new_user = User.create(name: "#{name.capitalize}", fan_points: 0)
+            puts " "
+            puts " "
+            puts "Great! Thanks, #{name}."
+            sleep(1)
+            puts "Your new account's been created."
+            sleep(1)
+            puts " "
+            puts "The next time you use this app, you can login with your name."
+            puts " "
+            puts "Now let's jump right in, shall we?"
+            sleep(1)
+            puts " "
+        elsif input == '1'
+            puts "Welcome back to [title]! Please enter your first name: "
+            returning_user = gets.chomp.capitalize
+            if User.find_by(name: returning_user)
+                puts "Welcome back #{returning_user}"
+                @user = User.find_by(name: returning_user)
+            else
+                puts "Username not found"
+            end
+        puts " "
+        end
+    end
 
-                                                    def user_arr
-                                                        @@user_arr  
-                                                    end 
 
-                                                    def user_name
-                                                        user_arr[0]
-                                                    end
+    # def start
+    #     system "clear"
+    #     intro
+    #     login
+    #         # prompt_0
+    #     main_menu
+    #     # delete_account
+    #     # mission_complete_test_method
+    # end                                            
+    
+    # def intro
+    #     puts " "
+    #     puts "J.A.R.V.I.S. initializing"
+    #     sleep(2)
+    #     puts "..."
+    #     sleep(1)
+    #     puts " "
+    #     puts " "
+    #     puts " "
+    #     puts "Welcome to [title]: An Ironman Inspired App."
+    #     sleep(2)
+    #     puts " "
+    # end                                
+    
+    def delete_account
+        if @user
+        puts "Are you sure you want to delete your account?"
+        puts "Enter either 'Yes' or 'No'."
+        x = gets.chomp
+            if x == "Yes"
+                puts " "
+                deletion = User.find_by(id: self.user.id)
+                deletion.destroy
+                # delete_movies = Movie.where(user_id: self.user.id)[0]
+                # if delete_movies
+                # delete_movies.destroy
+                # exit
+            else
+                puts " "
+                # exit
+            end
+        end
+    end
 
-                                                    def user_fan_points 
-                                                        user_arr[1]
-                                                    end 
+
+    def fan_points_arr 
+        @@fan_points_arr  
+    end
+
+    def user_arr
+        @@user_arr  
+    end 
+
+    def user_name
+        user_arr[0]
+    end
+
+    def user_fan_points 
+        user_arr[1]
+    end 
 
     def introduction 
         puts "J.A.R.V.I.S. initializing"
@@ -57,6 +138,7 @@ class Game
     def prompt_0
         puts "   1. Browse Suits"
         puts "   2. Your Marvel Movies"
+        puts "   3. Delete Account"
         sleep(1)
         puts " "
         puts "What would you like to do first?"
@@ -64,17 +146,18 @@ class Game
         puts " "
         puts "   Enter '1' to browse all suits."
         puts "   Enter '2' to browse Marvel movies."
-        puts " "
+        puts "   Enter '3' to delete account."
         input = gets.chomp
         if input.to_i == 1 
             suits_menu
-            # puts " suits_menu "
+            puts " suits_menu "
         elsif input.to_i == 2
             movies_menu 
-            # puts " movies_menu "
-        # else
-        #     puts "Please enter either '1' or '2'."
-        #     # self.prompt_0
+        elsif input.to_i == 3
+            delete_account
+        else
+            puts "Please enter either '1' or '2'."
+            self.prompt_0
         end
         puts ""
     end
@@ -135,27 +218,29 @@ class Game
             puts "Test Notes for Malcolm regarding Julian's latest tests: "
             puts " "
             puts " "
-            puts "fan_points_arr.count:"
-            puts fan_points_arr.count   
+            # puts "fan_points_arr.count:"
+            # puts fan_points_arr.count   
             puts " "
-            puts "user:"
-            puts user_name
-            puts " "
-            puts "user's name:"
-            puts user_name.name  
-            puts " "
+            # puts "user:"
+            # puts user_name
+            # puts @user.name
+            # puts " "
+            # puts "user's name:"
+            puts @user.name  
+            # puts " "
+        
+            @user.update(fan_points: @user.fan_points.to_i + 1)
             puts "user's fan_points:"
-            puts user_fan_points 
-            puts " "
+            puts @user.fan_points
+            # puts " "
             puts "Basically, these are the main things we need to do the last bit of 'engineering' for our MVP to be complete:"
             puts "Set up counter and update a user's fan_points (+= 1) each time a new movie is added.. "
-          
+            # self.main_menu
             # Add point to users fanpoints
             # Display message about it
         else
             self.movies_menu
         end
-
     end
 
 end
