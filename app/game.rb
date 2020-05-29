@@ -15,8 +15,6 @@ class Game
         main_menu 
     end
 
-
-
     def login
         puts "   Please enter '0' to CREATE A NEW ACCOUNT, or '1' to LOGIN."
         input = gets.chomp
@@ -220,18 +218,21 @@ class Game
             puts "Test Notes for Malcolm regarding Julian's latest tests: "
             puts " "
             puts " "
-            puts "fan_points_arr.count:"
-            puts fan_points_arr.count   
+            # puts "fan_points_arr.count:"
+            # puts fan_points_arr.count   
             puts " "
-            puts "user:"
-            puts user_name
-            puts " "
-            puts "user's name:"
-            puts user_name.name  
-            puts " "
+            # puts "user:"
+            # puts user_name
+            # puts @user.name
+            # puts " "
+            # puts "user's name:"
+            puts @user.name  
+            # puts " "
+        
+            @user.update(fan_points: @user.fan_points.to_i + 1)
             puts "user's fan_points:"
-            puts user_fan_points 
-            puts " "
+            puts @user.fan_points
+            # puts " "
             puts "Basically, these are the main things we need to do the last bit of 'engineering' for our MVP to be complete:"
             puts "Set up counter and update a user's fan_points (+= 1) each time a new movie is added.. "
             # self.main_menu
