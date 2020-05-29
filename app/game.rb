@@ -3,25 +3,63 @@ require_relative './models/movie.rb'
 require_relative './models/suit.rb'
 
 class Game
-                                                    @@fan_points_arr = []
-                                                    # @@user_arr = [] 
+    attr_reader :user
+    @@fan_points_arr = []
+    @@user_arr = [] 
 
     def start
         system "clear"
         introduction
-        welcome
+        login
+        # welcome
         main_menu 
     end
 
-    def start
-        system "clear"
-        intro
-        login
-            # prompt_0
-        main_menu
-        # delete_account
-        # mission_complete_test_method
-    end                                            
+
+
+    def login
+        puts "   Please enter '0' to CREATE A NEW ACCOUNT, or '1' to LOGIN."
+        input = gets.chomp
+        if input == '0'
+            puts "Please enter your first name."
+            name = gets.chomp
+            puts " "
+            new_user = User.create(name: "#{name.capitalize}", fan_points: 0)
+            puts " "
+            puts " "
+            puts "Great! Thanks, #{name}."
+            sleep(1)
+            puts "Your new account's been created."
+            sleep(1)
+            puts " "
+            puts "The next time you use this app, you can login with your name."
+            puts " "
+            puts "Now let's jump right in, shall we?"
+            sleep(1)
+            puts " "
+        elsif input == '1'
+            puts "Welcome back to [title]! Please enter your first name: "
+            returning_user = gets.chomp.capitalize
+            if User.find_by(name: returning_user)
+                puts "Welcome back #{returning_user}"
+                @user = User.find_by(name: returning_user)
+            else
+                puts "Username not found"
+            end
+        puts " "
+        end
+    end
+
+
+    # def start
+    #     system "clear"
+    #     intro
+    #     login
+    #         # prompt_0
+    #     main_menu
+    #     # delete_account
+    #     # mission_complete_test_method
+    # end                                            
     
     # def intro
     #     puts " "
@@ -42,20 +80,20 @@ class Game
         puts "Are you sure you want to delete your account?"
         puts "Enter either 'Yes' or 'No'."
         x = gets.chomp
-        if x = "Yes"
-            puts " "
-            # deletion = User.find_by(id: self.user.id)
-            # deletion.destroy
-            # delete_movies = Movie.where(user_id: self.user.id)[0]
-            # if delete_movies
-            # delete_movies.destroy
-            # exit
-        else
-            puts " "
-            # exit
+            if x == "Yes"
+                puts " "
+                deletion = User.find_by(id: self.user.id)
+                deletion.destroy
+                # delete_movies = Movie.where(user_id: self.user.id)[0]
+                # if delete_movies
+                # delete_movies.destroy
+                # exit
+            else
+                puts " "
+                # exit
+            end
         end
     end
-end
 
 
     def fan_points_arr 
@@ -117,6 +155,8 @@ end
             puts " suits_menu "
         elsif input.to_i == 2
             movies_menu 
+        elsif input.to_i == 3
+            delete_account
         else
             puts "Please enter either '1' or '2'."
             self.prompt_0
@@ -194,7 +234,7 @@ end
             puts " "
             puts "Basically, these are the main things we need to do the last bit of 'engineering' for our MVP to be complete:"
             puts "Set up counter and update a user's fan_points (+= 1) each time a new movie is added.. "
-          
+            # self.main_menu
             # Add point to users fanpoints
             # Display message about it
         else
