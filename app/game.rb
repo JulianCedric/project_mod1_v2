@@ -4,7 +4,7 @@ require_relative './models/suit.rb'
 
 class Game
                                                     @@fan_points_arr = []
-                                                    @@user_arr = [] 
+                                                    # @@user_arr = [] 
 
     def start
         system "clear"
@@ -13,21 +13,66 @@ class Game
         main_menu 
     end
 
-                                                    def fan_points_arr 
-                                                        @@fan_points_arr  
-                                                    end
+    def start
+        system "clear"
+        intro
+        login
+            # prompt_0
+        main_menu
+        # delete_account
+        # mission_complete_test_method
+    end                                            
+    
+    # def intro
+    #     puts " "
+    #     puts "J.A.R.V.I.S. initializing"
+    #     sleep(2)
+    #     puts "..."
+    #     sleep(1)
+    #     puts " "
+    #     puts " "
+    #     puts " "
+    #     puts "Welcome to [title]: An Ironman Inspired App."
+    #     sleep(2)
+    #     puts " "
+    # end                                
+    
+    def delete_account
+        if @user
+        puts "Are you sure you want to delete your account?"
+        puts "Enter either 'Yes' or 'No'."
+        x = gets.chomp
+        if x = "Yes"
+            puts " "
+            # deletion = User.find_by(id: self.user.id)
+            # deletion.destroy
+            # delete_movies = Movie.where(user_id: self.user.id)[0]
+            # if delete_movies
+            # delete_movies.destroy
+            # exit
+        else
+            puts " "
+            # exit
+        end
+    end
+end
 
-                                                    def user_arr
-                                                        @@user_arr  
-                                                    end 
 
-                                                    def user_name
-                                                        user_arr[0]
-                                                    end
+    def fan_points_arr 
+        @@fan_points_arr  
+    end
 
-                                                    def user_fan_points 
-                                                        user_arr[1]
-                                                    end 
+    def user_arr
+        @@user_arr  
+    end 
+
+    def user_name
+        user_arr[0]
+    end
+
+    def user_fan_points 
+        user_arr[1]
+    end 
 
     def introduction 
         puts "J.A.R.V.I.S. initializing"
@@ -57,6 +102,7 @@ class Game
     def prompt_0
         puts "   1. Browse Suits"
         puts "   2. Your Marvel Movies"
+        puts "   3. Delete Account"
         sleep(1)
         puts " "
         puts "What would you like to do first?"
@@ -64,17 +110,16 @@ class Game
         puts " "
         puts "   Enter '1' to browse all suits."
         puts "   Enter '2' to browse Marvel movies."
-        puts " "
+        puts "   Enter '3' to delete account."
         input = gets.chomp
         if input.to_i == 1 
             suits_menu
-            # puts " suits_menu "
+            puts " suits_menu "
         elsif input.to_i == 2
             movies_menu 
-            # puts " movies_menu "
-        # else
-        #     puts "Please enter either '1' or '2'."
-        #     # self.prompt_0
+        else
+            puts "Please enter either '1' or '2'."
+            self.prompt_0
         end
         puts ""
     end
@@ -155,7 +200,6 @@ class Game
         else
             self.movies_menu
         end
-
     end
 
 end
